@@ -106,6 +106,10 @@ public class UserServiceImple implements UserService {
 	public List<UserDTO> searchUser(String query) {
 		logger.info("{} Search User With Id : ",query);
 		List<User> users = userRepository.searchUser(query);
+			if (users.isEmpty()) {
+	            throw new ResourceNotFoundException("No user found in with Name: " + query);
+	        }
+			//.orElseThrow(() -> new ResourceNotFoundException("Product is not exists with given id :"  + id));
 		logger.info("{} User Successfully Found",query);
 		return users.stream().map(userMapper::toDTO).collect(Collectors.toList());
 	}
