@@ -16,6 +16,7 @@ public class UserMapper {
         user.setId(userDTO.getId());
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
+        
 
         if (userDTO.getProfile() != null) {
             Profile profile = new Profile();
